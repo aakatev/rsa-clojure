@@ -56,12 +56,29 @@
   (mod (expt y d) n)
 )
 
-(defn Test []
+(defn Test1 []
    (loop [x 0]
     (when (< x n)
       (println (str "Encrypting " x " results into " (enc x)))
       (println (str "Decrypting " (enc x) " results into " (dec (enc x))))
       (recur (+ x 1)))))
       
-(println "2. Test")
-(Test)
+(println "2. Test 1")
+(Test1)
+
+(defn Test2 []
+  (def text "Super Secret Text")
+  (def text-bytes (byte-array (map byte text)))
+
+  (println (str "plaintext = " text))
+
+  (for [b text-bytes] 
+    (println (str 
+      "Encoded Character: " (char b)
+      " (int:" b 
+      "/enc:" (enc b) 
+      "/dec:" (dec (enc b)) ")" )))
+)
+      
+(println "3. Test 2")
+(Test2)
